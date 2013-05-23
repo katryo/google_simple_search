@@ -1,7 +1,7 @@
 #coding: utf-8
 from bottle import Bottle, route, run, static_file, request
 from mako.template import Template
-import ninja_googlesearch
+import googlesearch
 import pdb
 
 
@@ -22,7 +22,7 @@ def results_get():
 @route('/results', method='POST')
 def results():
     query = request.forms.decode().get('query')
-    items = ninja_googlesearch.simple_search(query)
+    items = googlesearch.simple_search(query)
     return template.render(items=items)
 
 

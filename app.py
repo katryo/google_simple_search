@@ -1,27 +1,32 @@
 #coding: utf-8
-from bottle import Bottle, route, get, post, run, static_file
+from bottle import Bottle, route, run, static_file, request
 from mako.template import Template
+import ninja_googlesearch
+import pdb
 
 
-template = Template(filename='views/index.tmpl')
+template = Template(filename='static/templates/index.tmpl')
 app = Bottle()
+
 
 @route('/static/:path#.+#', name='static')
 def static(path):
     return static_file(path, root='static')
 
-@route('/assets/<filepath:path>')
-def assets(filepath):
-    return static_file(filepath, root='/assets/')
 
-@route('/help')
-def help():
-    return static_file('help.html', root='/assets/')
+@route('/results')
+def results_get():
+    return template.render(items='')
+
+
+@route('/results', method='POST')
+def results():
+    query = request.forms.decode().get('query')
+    items = ninja_googlesearch.simple_search(query)
+    return template.render(items=items)
+
 
 @route('/')
-@route('/denki')
-@route('/hello/<name>')
-def greet(name='who'):
-    name = name + 'あいあ'
-    return template.render(name=name)
+def greet():
+    return template.render(items='')
 run(host='localhost', port=1234, debug=True)

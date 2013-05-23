@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sub Task Search</title>
+    <title>Subtask Search</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Loading Bootstrap -->
@@ -21,12 +21,28 @@
   <body>
     <div class="container">
       <div class="demo-headline">
+        <a href="/">
         <h1 class="demo-logo">
-          Sub Task Search
+          Subtask Search
         </h1>
+      </a>
       </div> <!-- /demo-headline -->
         <div class="span4 offset4">
-      <input type="text" value placeholder="Input your task" class="span4 offset4" />
+				<form action="/results" method="post">
+      <input type="text" name="query" value placeholder="Input your task" class="span4 offset4" />
+			<input type="submit" value="Search" />
+			</form>
+      </div>
+      <div class="span8 offset2">
+        <ul class="unstyled">
+        % for item in items:
+        <li>
+          <a href= ${item['link']}>
+            ${item['title']}
+          </a>
+        </li>
+    % endfor
+  </ul>
       </div>
     </div> <!-- /container -->
 

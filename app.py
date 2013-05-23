@@ -1,4 +1,3 @@
-#coding: utf-8
 from bottle import Bottle, route, run, static_file, request
 from mako.template import Template
 import googlesearch

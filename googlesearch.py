@@ -1,5 +1,3 @@
-#! /usr/bin/python
-# -*- coding:utf-8 -*-
 import urllib
 import urllib.request
 import urllib.parse
@@ -8,7 +6,7 @@ import json
 
 def simple_search(query):
     QUERY = query
-    API_KEY = 'AIzaSyBdhBTUc5W5Aco3YGPwOlS_rYM0LBKl_jo'
+    API_KEY = 'AIzaSyBdhBTUc5W5Aco3YGPwOlS_rYM0LBKl_joo'
     NUM = 1
 
     url = 'https://www.googleapis.com/customsearch/v1?'

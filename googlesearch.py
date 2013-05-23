@@ -29,5 +29,3 @@ def simple_search(query):
             print('Error')
 
     return items
-    #for i in range(0, 10):
-        #print(items[i]['title'] + items[i]['link'])
